@@ -40,7 +40,7 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidAudience = configuration["JWTAuth:ValidIssuerURL"],
         ValidIssuer = configuration["JWTAuth:ValidIssuerURL"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTAuth:SecretKey"]))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTAuth:Secret"]))
     };
 });
 
