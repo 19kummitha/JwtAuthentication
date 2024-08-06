@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using JWTAuth.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTAuth.Controllers
 {
-    [Authorize]
+    [Authorize(Roles =UserRoles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
