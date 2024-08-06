@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System;
+using JWTAuth.TokenManager;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IAuthManager, AuthManager>();
 builder.Services.AddDbContext<AuthenticationDbContext>(options =>
 {
     var Connectionstring = builder.Configuration.GetConnectionString("AuthDbConnection");
@@ -27,7 +29,7 @@ builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+ 
 })
 // Adding Jwt Bearer
 .AddJwtBearer(options =>
