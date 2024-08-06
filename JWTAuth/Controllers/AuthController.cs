@@ -2,6 +2,7 @@
 using JWTAuth.TokenManager;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 
 namespace JWTAuth.Controllers
