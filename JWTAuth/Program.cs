@@ -36,8 +36,8 @@ builder.Services.AddAuthentication(options =>
     options.RequireHttpsMetadata = false;
     options.TokenValidationParameters = new TokenValidationParameters()
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
+        ValidateIssuer = false,
+        ValidateAudience = false,
         ValidAudience = configuration["JWTAuth:ValidIssuerURL"],
         ValidIssuer = configuration["JWTAuth:ValidIssuerURL"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTAuth:Secret"]))
@@ -50,8 +50,12 @@ builder.Services.AddAuthentication(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseAuthentication();
 
 app.UseAuthorization();
+
+
+
 
 app.MapControllers();
 

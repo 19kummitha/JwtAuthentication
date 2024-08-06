@@ -103,7 +103,7 @@ namespace JWTAuth.Controllers
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWTAuth:Secret"]));
             var token = new JwtSecurityToken(
-                issuer: _configuration["JWT:ValidIssuer"],
+               issuer: _configuration["JWT:ValidIssuer"],
                 audience: _configuration["JWT:ValidAudience"],
                 expires: DateTime.Now.AddHours(3),
                 claims: authClaims,
