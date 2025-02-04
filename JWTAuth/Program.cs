@@ -16,7 +16,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthManager, AuthManager>();
 builder.Services.AddDbContext<AuthenticationDbContext>(options =>
 {
-    var Connectionstring = builder.Configuration.GetConnectionString("AuthDbConnection");
+    var Connectionstring = configuration.GetConnectionString("AuthDbConnection");
     options.UseSqlServer(Connectionstring);
 });
 
